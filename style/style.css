@@ -1,0 +1,119 @@
+:root{
+	--color: #4700D8;
+	--color-n: #000722;
+	--color-b: #ffffff;
+}
+@font-face {
+	font-family: Geomanistic ;
+	src: url(./geomanist-regular.ttf);
+}
+
+*{
+	box-sizing: border-box;
+	font-family: Geomanistic ;
+}
+
+body,html{
+	position: relative;
+	width: 100vw;
+	overflow-x: hidden;
+	height: 100%;
+	background-color: var(--color-n);
+}
+
+.nav{
+	width: 100vw;
+	height: 10vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 5%;
+}
+
+.nav__logo{
+	font-family: Geomanistic;
+	font-weight: 700;
+	font-size: 2.7rem;
+	color: var(--color);
+}
+
+.nav__buscar{
+	position: relative;
+	background-color: transparent;
+	background-image: url(./search.png);
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	border: none;
+	width: 20%;
+	height: 4vh;
+	outline: none;
+	font-size: 1.5rem;
+	padding: 0 5%;
+	border-radius: 3vh;
+	transition: .4s ease-in-out;
+	color: transparent;
+}
+
+.nav__buscar:focus{
+	background-position: right;
+	border: 2px solid var(--color);
+	width: 60%;
+	color: var(--color);
+}
+
+/*------------------*/
+/*-------SLIDE------*/
+/*------------------*/
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.section{
+	position: relative;
+	font-family: Geomanistic;
+	padding: 5% 0 0 5%;
+}
+
+.section::before{
+	position: absolute;
+	content: '';
+	right: -.5rem;
+	top: 0;
+	background-image: linear-gradient(to right, transparent , var(--color-n)90%);
+	width: 10%;
+	height: 100%;
+	z-index: 10;
+}
+
+.section-titulo{
+	font-size: 1.4rem;
+	font-weight: 600;
+	color: var(--color-b);
+	opacity: .8;
+	margin-bottom: 5%;
+}
+
+.slide{
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	color: var(--color-b);
+	font-family: Geomanistic;
+	overflow-x: scroll;
+	overflow-y: visible;
+	box-sizing: content-box;
+}
+
+.section:nth-of-type(1) .slide__peli-img{
+	width: 38vw;
+}
+
+.slide__peli-img{
+	border-radius: 5%;
+	width: 32vw;
+}
+
+

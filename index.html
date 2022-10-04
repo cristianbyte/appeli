@@ -1,23 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/images/favicon.png"/>  
-    <title> USO DE UNA API</title>
-    <meta name="description" content="Register for a machine learning workshop at our school for machines who can't learn good and want to do other stuff good too">  
-    
-    <link rel="stylesheet" src="style.css">  
+    <title>appeli</title>
+    <meta name="description" content="Emcuantra un catalogo completo de las ultimas peliculas del cine.">  
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/style.css">
+
 </head>
 <body>
-    <div class="contenedor" id="contenedor"></div>
+    <nav class="nav" >
+        <h1 class="nav__logo" >appeli</h1>
+        <input class="nav__buscar" type="text" name="buscar" id="buscar" >
+    </nav>
 
-	<div class="paginacion">
-		<button id="btnAnterior">Anterior</button>
-		<button id="btnSiguiente">Siguiente</button>
-	</div>
+    
 
-    <script src="script.js"></script>
+    <section class="section">
+        <h3 class="section-titulo">Tendencias</h3>
+        <div class="slide">
+            <div class="slide__peli">
+                <img class="slide__peli-img" src="https://image.tmdb.org/t/p/w300/moDLTCdLx38kMhN53KOTw0LdWMh.jpg">
+                <h4 class="slide__peli-titulo">Black Adam</h4>
+                <div class="slide__peli-date">Dec 16, 2018</div>
+            </div>
+            <div class="slide__peli">
+                <img class="slide__peli-img" src="https://image.tmdb.org/t/p/w300/moDLTCdLx38kMhN53KOTw0LdWMh.jpg">
+                <h4 class="slide__peli-titulo">Black Adam</h4>
+                <div class="slide__peli-date">Black Adam</div>
+            </div>
+            <div class="slide__peli">
+                <img class="slide__peli-img" src="https://image.tmdb.org/t/p/w300/moDLTCdLx38kMhN53KOTw0LdWMh.jpg">
+                <h4 class="slide__peli-titulo">Black Adam</h4>
+                <div class="slide__peli-date">Black Adam</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h3 class="section-titulo">TV Shows</h3>
+        <div class="slide">
+            <div class="slide__peli">
+                <img class="slide__peli-img" src="https://image.tmdb.org/t/p/w300/moDLTCdLx38kMhN53KOTw0LdWMh.jpg">
+                <h4 class="slide__peli-titulo">Black Adam</h4>
+                <div class="slide__peli-date">Dec 16, 2018</div>
+            </div>
+            <div class="slide__peli">
+                <img class="slide__peli-img" src="https://image.tmdb.org/t/p/w300/moDLTCdLx38kMhN53KOTw0LdWMh.jpg">
+                <h4 class="slide__peli-titulo">Black Adam</h4>
+                <div class="slide__peli-date">Black Adam</div>
+            </div>
+            <div class="slide__peli">
+                <img class="slide__peli-img" src="https://image.tmdb.org/t/p/w300/moDLTCdLx38kMhN53KOTw0LdWMh.jpg">
+                <h4 class="slide__peli-titulo">Black Adam</h4>
+                <div class="slide__peli-date">Black Adam</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h3 class="section-titulo">Seguir viendo</h3>
+        <div class="slide">
+            <div class="slide__peli">
+                <img class="slide__peli-img" src="https://image.tmdb.org/t/p/w300/moDLTCdLx38kMhN53KOTw0LdWMh.jpg">
+                <h4 class="slide__peli-titulo">Black Adam</h4>
+                <div class="slide__peli-date">Dec 16, 2018</div>
+            </div>
+            <div class="slide__peli">
+                <img class="slide__peli-img" src="https://image.tmdb.org/t/p/w300/moDLTCdLx38kMhN53KOTw0LdWMh.jpg">
+                <h4 class="slide__peli-titulo">Black Adam</h4>
+                <div class="slide__peli-date">Black Adam</div>
+            </div>
+            <div class="slide__peli">
+                <img class="slide__peli-img" src="https://image.tmdb.org/t/p/w300/moDLTCdLx38kMhN53KOTw0LdWMh.jpg">
+                <h4 class="slide__peli-titulo">Black Adam</h4>
+                <div class="slide__peli-date">Black Adam</div>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <script src="./app.js"></script>
 </body>
 </html>
