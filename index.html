@@ -14,29 +14,15 @@
 <body>
     <nav class="nav" >
         <h1 class="nav__logo" >appeli</h1>
-        <input class="nav__buscar" type="text" name="buscar" id="buscar" >
+        <input class="nav__buscar" type="text" spellcheck="false" name="buscar" id="buscar" >
     </nav>
 
-    
+
 
     <section class="section">
         <h3 class="section-titulo">Tendencias</h3>
         <div class="slide">
-            <div class="slide__peli">
-                <img class="slide__peli-img" src="https://image.tmdb.org/t/p/w300/moDLTCdLx38kMhN53KOTw0LdWMh.jpg">
-                <h4 class="slide__peli-titulo">Black Adam</h4>
-                <div class="slide__peli-date">Dec 16, 2018</div>
-            </div>
-            <div class="slide__peli">
-                <img class="slide__peli-img" src="https://image.tmdb.org/t/p/w300/moDLTCdLx38kMhN53KOTw0LdWMh.jpg">
-                <h4 class="slide__peli-titulo">Black Adam</h4>
-                <div class="slide__peli-date">Black Adam</div>
-            </div>
-            <div class="slide__peli">
-                <img class="slide__peli-img" src="https://image.tmdb.org/t/p/w300/moDLTCdLx38kMhN53KOTw0LdWMh.jpg">
-                <h4 class="slide__peli-titulo">Black Adam</h4>
-                <div class="slide__peli-date">Black Adam</div>
-            </div>
+
         </div>
     </section>
 
@@ -82,7 +68,23 @@
         </div>
     </section>
     
-
+    <nav class="navDown" >
+        <div class="navDown__item" >
+            <img spellcheck="true" src="./style/brightness.png" alt="" srcset="">
+        </div>
+        <div class="navDown__item active">
+            <img src="./style/home.png" alt="" srcset="">
+            <span>Home</span>
+        </div>
+        <div class="navDown__item">
+            <img src="./style/save-instagram.png" alt="" srcset="">
+            <span>Saved</span>
+        </div>
+        <div class="navDown__item">
+            <img src="./style/user.png" alt="" srcset="">
+            <span>Me</span>
+        </div>
+    </nav>
 
     <script src="./app.js"></script>
 </body>
