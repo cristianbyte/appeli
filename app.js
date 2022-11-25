@@ -1,20 +1,9 @@
 const API_KEY = '531824c59374ba1968139fa7bcc652dc'
 const IMG_URL = 'https://image.tmdb.org/t/p/w300'
+const scrollContainer = document.querySelector(".slide");
 
-const nav = document.getElementsByClassName('navDown')[0]
-let ventanaActual = document.getElementsByClassName('navDown__item')[1]
-
-nav.addEventListener('click', (e)=>{
-    if(e.target && e.target.tagName == 'IMG' && e.path[1].childElementCount == 2){
-        ventanaActual.classList.value = 'navDown__item'
-        e.target.parentElement.classList.add('active')
-        ventanaActual = e.target.parentElement
-        // console.log(ventanaActual.children)
-    }
-})
-
-async function traerPelisDestacadas(media_type='movie',time_window='day'){
-    const res = await fetch(`https://api.themoviedb.org/3/trending/${media_type}/${time_window}?api_key=${API_KEY}&language=es`)
+async function traerPelisDestacadas(media_type='movie',slidenum=0){
+    const res = await fetch(`https://api.themoviedb.org/3/trending/${media_type}/day?api_key=${API_KEY}&language=es`)
     const data = await res.json()
     const movies = data.results
     movies.forEach(film => {
@@ -32,9 +21,10 @@ async function traerPelisDestacadas(media_type='movie',time_window='day'){
         filmContainer.appendChild(filmImg)
         filmContainer.appendChild(filmTile)
         filmContainer.appendChild(filmDate)
-        document.getElementsByClassName('slide')[0].appendChild(filmContainer)
+        document.getElementsByClassName('slide')[slidenum].appendChild(filmContainer)
+        document.getElementsByClassName('slide')[slidenum]
     });
-
 }
 
 traerPelisDestacadas()
+scrollContainer.addEventListener("wheel", (evt) => {scrollContainer.scrollLeft += evt.deltaY;});
