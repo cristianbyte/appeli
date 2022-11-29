@@ -2,6 +2,7 @@
 	--color: #4700D8;
 	--color-n: #000722;
 	--color-b: #ffffff;
+	--rate: 50%;
 }
 
 @font-face {
@@ -16,6 +17,40 @@
 *{
 	box-sizing: border-box;
 	font-family: pop;
+}
+
+.load{
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background-color: #00000088;
+	z-index: 90;
+}
+
+.load__anime{
+	width: 20vw;
+	height: 20vw;
+	animation: rotate 1s infinite step-end;
+	transform: scaleX(-1);
+}
+
+@keyframes rotate {
+	0%{transform: scaleX(-1) rotateZ(-0deg);}
+	12%{transform: scaleX(-1) rotateZ(-45deg);}
+	25%{transform: scaleX(-1) rotateZ(-90deg);}
+	37%{transform: scaleX(-1) rotateZ(-135deg);}
+	50%{transform: scaleX(-1) rotateZ(-180deg);}
+	62%{transform: scaleX(-1) rotateZ(-225deg);}
+	75%{transform: scaleX(-1) rotateZ(-270deg);}
+	88%{transform: scaleX(-1) rotateZ(-315deg);}
+	100%{transform: scaleX(-1) rotateZ(-360deg);}
+}
+
+.loanding{
+	display: flex;
 }
 
 body,html{
@@ -148,7 +183,7 @@ body,html{
 	height: 100vh;
 	top: 0;
 	left: 100%;
-	z-index: 100;
+	z-index: 50;
 	transition: .4s ease-in-out;
 }
 
@@ -189,41 +224,48 @@ body,html{
 	letter-spacing: 1px;
 	font-size: calc(3vh + 3vw);
 	text-align: center;
-	z-index: 20;
+	z-index: 60;
 }
 
 .aside__main--about{
 	font-size: calc(1vh + 1vw);
+	padding: 0 5%;
 	text-align: center;
 	margin-top: .5rem;
 	font-family: pop;
 	color: grey;
-	z-index: 20;
+	z-index: 65;
 }
+
 .aside__main--rate{
 	display: flex;
-	font-family: pop;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
 	margin-top: .5rem;
+}
+
+.rate{
+	font-family: pop;
 	font-size: calc(1.2vh + 1.2vw);
 	color: gold;
 	text-align: center;
 }
-.aside__main--stars{
-	display: inline;
+.stars{
 	margin-left: .5rem;
 	font-size: calc(1.5vh + 1.5vw);
-	background: -webkit-linear-gradient(0deg, gold 75%, grey 35%);
+	background: -webkit-linear-gradient(0deg, gold var(--rate), grey calc(var(--rate) - 100% ));
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
 .aside__main--descript{
 	font-family: popLight;
+	text-align: justify;
 	font-size: calc(1.3vw + 1.3vh);
-	padding: .5rem 5%;
+	line-height: calc(1.5vw + 1.5vh);
+	padding: 8%;
+	max-height: 35vh;
+	overflow-y: scroll;
 	color: gray;
 }
 
