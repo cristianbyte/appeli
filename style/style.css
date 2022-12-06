@@ -20,7 +20,7 @@
 }
 
 .load{
-	position: absolute;
+	position: fixed;
 	width: 100vw;
 	height: 100vh;
 	display: none;
@@ -116,6 +116,7 @@ body,html{
 	position: relative;
 	font-family: pop;
 	margin: 1rem 0 0 0;
+	height: calc(25vh + 16vw);
 }
 
 .section::before, .section::after{
@@ -177,10 +178,12 @@ body,html{
 }
 
 .aside{
-	position: absolute;
+	position: fixed;
 	background-color: var(--color-n);
-	width: 100vw;
+	width: 102%;
 	height: 100vh;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	top: 0;
 	left: 100%;
 	z-index: 50;
@@ -194,6 +197,7 @@ body,html{
 .aside__main{
 	position: relative;
 	height: 50vh;
+	width: 100%;
 	display: flex;
 	justify-content: flex-end;
 	flex-direction: column;
@@ -264,7 +268,8 @@ body,html{
 	font-size: calc(1.3vw + 1.3vh);
 	line-height: calc(1.5vw + 1.5vh);
 	padding: 8%;
-	max-height: 35vh;
+	margin: 5% 0;
+	max-height: 25vh;
 	overflow-y: scroll;
 	color: gray;
 }
@@ -272,14 +277,14 @@ body,html{
 .aside__back{
 	position: absolute;
 	cursor: pointer;
-	top: 0;
+	top: 22vh;
 	left: 0;
 	background-image: url(./arrow.png);
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
-	width: 8vw;
-	height: 8vw;
+	width: 9vw;
+	height: 9vw;
 	margin: 5%;
 	z-index: 90;
 }

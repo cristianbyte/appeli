@@ -2,8 +2,15 @@
 
 ### Una web app para consultar las últimas películas.
 
-![WebCapture](./style/appeli.pngst)
+![WebCapture](./style/appeli-home.png)
+![WebCapture](./style/appeli-search.png)
 
 ### Consumo API: themoviedb.org 
 
-### Date Relase: NOVEMBER 30 - 2022
+## Funcionalidades:
+
+- Buscar Películas
+- Obtener resultados similares: producto de las búsquedas.
+- Obtener películas y series en tendencia y destacadas.
+
+### Date Relase: DECEMBER 06 - 2022

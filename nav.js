@@ -8,28 +8,39 @@ const aboutAside = $('.aside__main--about')
 const rateAside = $('.rate')
 const starsAside = $(':root')
 const descriptAside = $('.aside__main--descript')
+const searchInput = $('#buscar')
 
 function navigate(){
     location.hash.startsWith('#movie=') ? movie(location.hash) :
     location.hash.startsWith('#tv=') ? tv(location.hash) :
-    location.hash.startsWith('#search=') ? console.log('movie') : location.hash = '#home'
+    location.hash.startsWith('#query=') ? search(location.hash) : location.hash = '#home'
 }
 
-function movie(id){
+async function movie(id){
     id = id.replace('#movie=','')
-    getFilm( 'movie',id)
+    activeWindow.classList.add('active')
+    const res = await consult(`movie/${id}`)
+    getFilm( res,`movie/${id}/recommendations`)
 }
-function tv(id){
+async function tv(id){
     id = id.replace('#tv=','')
-    getFilm('tv',id)
+    activeWindow.classList.add('active')
+    const res = await consult(`tv/${id}`)
+    getFilm(res,`tv/${id}/recommendations`)
 }
-function search(id){
-    return 0
+async function search(id){
+    id = id.replace('#','&')
+    activeWindow.classList.add('active')
+    const res = await consult(`search/multi`,`${id}&page=1&include_adult=false`)
+    const resComplete = await consult(`${res[0].media_type}/${res[0].id}`) 
+    getFilm(resComplete,`search/multi`,`${id}&page=1&include_adult=false`)
 }
 
-async function getFilm( filmType,id){
-    activeWindow.classList.add('active')
-    const res = await consult(`${filmType}/${id}`)
+async function getFilm( res,ruta,extra){
+
+    //here is a bad practice, i know it's just for time. :$
+    consultaSlide(ruta,3,extra)
+
     // background-image
     imgAside.src = `https://image.tmdb.org/t/p/w780${res.backdrop_path}`
     // title
@@ -51,11 +62,16 @@ async function getFilm( filmType,id){
     starsAside.style.setProperty('--rate', `${parseInt(res.vote_average * 10, 10)}%`);
     // description
     descriptAside.innerHTML = res.overview;
-    
 }
 
 navigate()
-
+function doInput(){
+    location.hash = `#query=${searchInput.value}`
+    searchInput.value=''
+}
+searchInput.addEventListener('keypress', (e)=>{
+    e.keyCode == 13 ? doInput() : console.log('typing...')
+})
 backButton.addEventListener('click',()=>{
     location.hash = '#home'
     activeWindow.classList.remove('active')
