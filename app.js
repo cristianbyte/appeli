@@ -4,6 +4,13 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w300'
 const scrollContainer = document.querySelector(".slide");
 const load = document.querySelector('.load')
 
+const lazyLoader = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+        if (entry.isIntersecting)   entry.target.setAttribute('src', entry.target.getAttribute('data-img'))
+    })
+});
+
+
 async function consult(search, extra = ''){
     load.classList.add('loanding')
     //&query=thor&page=1&include_adult=false
@@ -29,12 +36,13 @@ async function consultaSlide(search='trending/movie/day',slidenum=0,extra=''){
         filmContainer.setAttribute('href', `#${media_type}=${film.id}`)
         filmImg.classList.add('slide__peli-img')
         if(film.poster_path == undefined){return}
-        filmImg.setAttribute('src', IMG_URL + film.poster_path)
+        filmImg.setAttribute('data-img', IMG_URL + film.poster_path)
         filmTile.classList.add('slide__peli-titulo')
         filmTile.innerHTML = film.title ?? film.name
         filmDate.classList.add('slide__peli-date')
         filmDate.innerHTML = film.release_date ?? film.first_air_date
         
+        lazyLoader.observe(filmImg)
         filmContainer.append(filmImg, filmTile, filmDate)
         document.getElementsByClassName('slide')[slidenum].appendChild(filmContainer)
     });

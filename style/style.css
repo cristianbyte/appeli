@@ -175,6 +175,22 @@ body,html{
 
 .slide__peli-img{
 	width: calc(10vh + 8vw);
+	aspect-ratio: 2/3;
+	border-radius: .5rem;
+}
+
+.slide__peli-img:empty{
+	background: linear-gradient(0.25turn, transparent, #252939d2, transparent);
+	background-repeat: no-repeat;
+	background-size: 200%;
+	background-position: 0%;
+	animation: loading 1s infinite;
+}
+
+@keyframes loading {  
+	to {
+		background-position: 100%;
+	}
 }
 
 .aside{
