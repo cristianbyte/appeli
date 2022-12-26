@@ -102,13 +102,13 @@ likeButton.addEventListener('click',()=>{
     //film.media
     const dataLike = {
         'id':res.id,
-        'title': res.title, 
+        'title': res.title ?? res.name, 
         'poster_path': res.poster_path, 
         'release_date': res.release_date ?? res.first_air_date,
         'media': location.hash.startsWith('#movie') ? 'movie' : 'tv'
     }
-    likeButton.classList.contains('liked') ? ( 
-        localStorage.setItem(res.id, JSON.stringify(dataLike))) : localStorage.removeItem(res.id)
-
-    console.log(localStorage)
+    likeButton.classList.contains('liked') ?  
+        localStorage.setItem(res.id, JSON.stringify(dataLike))
+        : localStorage.removeItem(res.id)
+    updateFvorites()
 })

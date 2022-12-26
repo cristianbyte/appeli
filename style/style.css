@@ -326,7 +326,6 @@ body,html{
 	height: 8vh;
 	background-color: var(--color);
 	color: var(--color-n);
-	font-size: 1.5rem;
 	font-family: pop;
 	display: flex;
 	justify-content: center;

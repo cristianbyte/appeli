@@ -20,8 +20,9 @@ async function consult(search, extra = ''){
     return data.results ?? data
 }
 
-function pullSlide(arrayPelis, media, slidenum){
-    arrayPelis.forEach(film => {
+function pullSlide(obPelis, media, slidenum){
+    document.getElementsByClassName('slide')[slidenum].innerHTML=''
+    obPelis.forEach(film => {
         
         // film => id, poster_path, title-name, relase_date-first_air_date,
         const filmContainer = document.createElement('a')
@@ -40,6 +41,7 @@ function pullSlide(arrayPelis, media, slidenum){
         
         lazyLoader.observe(filmImg)
         filmContainer.append(filmImg, filmTile, filmDate)
+
         document.getElementsByClassName('slide')[slidenum].appendChild(filmContainer)
     });
 }
@@ -52,8 +54,27 @@ async function consultaSlide(search='trending/movie/day',slidenum=0,extra=''){
     pullSlide(movies,media_type,slidenum)
 }
 
+// fill favorites
+function updateFvorites(){
+    let listFavorites = []
+    for( i in localStorage){
+        if(localStorage.getItem(i) == null) break
+        listFavorites.push(localStorage.getItem(i))
+    }
+    listFavorites = [...listFavorites]
+    for (i in listFavorites){
+        listFavorites[i] = JSON.parse(listFavorites[i])
+    }
+
+    pullSlide(listFavorites, false, 3)
+}
+
+updateFvorites()
+
 consultaSlide()
 consultaSlide('trending/tv/day',1)
 consultaSlide('/discover/movie',2)
+
+
 
 scrollContainer.addEventListener("wheel", (evt) => {scrollContainer.scrollLeft += evt.deltaY;});
