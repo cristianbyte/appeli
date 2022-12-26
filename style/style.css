@@ -115,8 +115,8 @@ body,html{
 .section{
 	position: relative;
 	font-family: pop;
-	margin: 1rem 0 0 0;
-	height: calc(25vh + 16vw);
+	margin: 1rem 0 1rem 0;
+	height: min-content;
 }
 
 .section::before, .section::after{
@@ -149,6 +149,7 @@ body,html{
 	flex-direction: row;
 	padding-left: 5%;
 	gap: 20px;
+	height: min-content;
 	color: var(--color-b);
 	font-family: pop;
 	overflow-x: scroll;
@@ -160,6 +161,7 @@ body,html{
 .slide__peli-titulo, .slide__peli-date{
 	text-overflow: ellipsis;
 	line-height: 1rem;
+	height: min-content;
 	margin-top: .5rem;
 	color: var(--color-b);
 }
@@ -204,10 +206,6 @@ body,html{
 	left: 100%;
 	z-index: 50;
 	transition: .4s ease-in-out;
-}
-
-.active{
-	left: 0%;
 }
 
 .aside__main{
@@ -290,11 +288,11 @@ body,html{
 	color: gray;
 }
 
-.aside__back{
-	position: absolute;
+.aside__back, .aside__like{
+	position: fixed;
 	cursor: pointer;
-	top: 22vh;
-	left: 0;
+	top: 0;
+	left: 100%;
 	background-image: url(./arrow.png);
 	background-position: center;
 	background-size: cover;
@@ -302,5 +300,40 @@ body,html{
 	width: 9vw;
 	height: 9vw;
 	margin: 5%;
+	transition: .4s ease-in-out;
 	z-index: 90;
+}
+
+.aside__like{
+	background-image: url(./like.png);
+	margin-left: 85%;
+}
+
+.liked{
+	background-image: url(./liked.png);
+}
+
+.active{
+	left: 0%;
+}
+
+/*---------------*/
+/*--- FOOTER ----*/
+/*---------------*/
+
+.footer{
+	width: 100%;
+	height: 8vh;
+	background-color: var(--color);
+	color: var(--color-n);
+	font-size: 1.5rem;
+	font-family: pop;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer a{
+	color: var(--color-b);
+	font-weight: 800;
 }

@@ -20,20 +20,16 @@ async function consult(search, extra = ''){
     return data.results ?? data
 }
 
-async function consultaSlide(search='trending/movie/day',slidenum=0,extra=''){
-    let movies = await consult(search,extra)
-    if (movies.length == 0) movies = await consult(search.replace('recommendations','similar'))
-    const media_type = search.includes('movie') ? 'movie' : 'tv'
-    
-    document.getElementsByClassName('slide')[slidenum].innerHTML=''
-    movies.forEach(film => {
+function pullSlide(arrayPelis, media, slidenum){
+    arrayPelis.forEach(film => {
         
+        // film => id, poster_path, title-name, relase_date-first_air_date,
         const filmContainer = document.createElement('a')
         const filmImg = document.createElement('img')
         const filmTile = document.createElement('h4')
         const filmDate = document.createElement('div')
         filmContainer.classList.add('slide__peli')
-        filmContainer.setAttribute('href', `#${media_type}=${film.id}`)
+        filmContainer.setAttribute('href', `#${media ? media : film.media}=${film.id}`)
         filmImg.classList.add('slide__peli-img')
         if(film.poster_path == undefined){return}
         filmImg.setAttribute('data-img', IMG_URL + film.poster_path)
@@ -46,7 +42,14 @@ async function consultaSlide(search='trending/movie/day',slidenum=0,extra=''){
         filmContainer.append(filmImg, filmTile, filmDate)
         document.getElementsByClassName('slide')[slidenum].appendChild(filmContainer)
     });
+}
 
+async function consultaSlide(search='trending/movie/day',slidenum=0,extra=''){
+    let movies = await consult(search,extra)
+    if (movies.length == 0) movies = await consult(search.replace('recommendations','similar'))
+    const media_type = search.includes('movie') ? 'movie' : 'tv'
+    document.getElementsByClassName('slide')[slidenum].innerHTML=''
+    pullSlide(movies,media_type,slidenum)
 }
 
 consultaSlide()
